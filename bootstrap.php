@@ -4,29 +4,25 @@ use Breach\Request;
 
 # build routes
 $__routes = [
-    # ?
-    '\/auth' => [
-        'callback' => function() {
-            return 'Auth calling back!';
-        },
-        'before' => function() {
-            return 'Always triggered before callback.';
-        }
-    ],
-    /*
     # /
     '\/' => function () {
         return 'Hello world!';
     },
-    # /count/{number}
-    '\/number\/(\d+)' => function ($count) {
-        return 'Number is: '.$count;
-    },
-    # 404 page
+    '\/number\/(\d+)' => [
+        'callback' => function ($number) {
+            return 'The number is: ' . $number;
+        },
+        'before' => function () {
+            return 'im before number<br />';
+        },
+        'after' => function() {
+            return '<br />now im done';
+        }
+    ],
+    # error pages
     '404' => function () {
         return '404, page not found.';
     }
-    */
 ];
 
 # create a dispatcher and run against the requested uri
