@@ -8,7 +8,7 @@ $__routes = [
     '\/' => function () {
         return 'Hello world!';
     },
-    '\/number\/(\d+)' => [
+    'GET \/number\/(\d+)' => [
         'callback' => function ($number) {
             return 'The number is: ' . $number;
         },
@@ -19,6 +19,9 @@ $__routes = [
             return '<br />now im done';
         }
     ],
+    '\/image\/(gif|jpg)' => function($type) {
+        return 'image type is: '.$type;
+    },
     # error pages
     '404' => function () {
         return '404, page not found.';
@@ -26,7 +29,7 @@ $__routes = [
 ];
 
 # create a dispatcher and run against the requested uri
-$disp = new Dispatcher($__routes);
+$disp = new Dispatcher( $__routes );
 $disp->run(new Request());
 
 # end

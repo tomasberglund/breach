@@ -14,3 +14,5 @@ function class_paths($paths)
         require preg_replace('#\\\|_(?!.*\\\)#', '/', strtolower($c)) . '.php';
     });
 }
+
+# end
