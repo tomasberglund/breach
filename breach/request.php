@@ -24,6 +24,13 @@ class Request
     public $available_methods = ['GET', 'POST', 'PUT', 'DELETE'];
 
     /**
+     * holds the requests http method
+     *
+     * @var string
+     */
+    public $http_method;
+
+    /**
      * class constructor
      * stores URI and Querystring (if available)
      *
@@ -31,6 +38,7 @@ class Request
     function __construct()
     {
         $this->uri = $_SERVER['REQUEST_URI'];
+        $this->http_method = $_SERVER['REQUEST_METHOD'];
         $this->querystring = '';
         //
         if (strpos($this->uri, '?')) {
